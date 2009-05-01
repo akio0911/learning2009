@@ -1,0 +1,56 @@
+autocmd LocationChange .* :fmapc
+
+" Gmail
+js <<EOF
+autocommands.add('LocationChange',/mail\.google\.com\/(mail|a)\//,[
+  'js plugins.feedKey.setup(',
+  '"c / y j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc".split(/ +/).map(function(i) [i, "4" + i])',
+  ');'
+].join(''));
+EOF
+
+" livedoorReader
+" ldrのレートを++/--できるようにするgreasemonkeyスクリプト(http://d.hatena.ne.jp/kusigahama/20071107#1194447701)用に q,w もスルー対象に指定している
+js <<EOF
+autocommands.add('LocationChange',/reader\.livedoor\.com\/reader\//,
+  'js plugins.feedKey.setup("t o j k s ? r a p v c <Space> <S-Space> z Z < > q w b i".split(/ +/));');
+EOF
+" autocmd LocationChange http://reader\.livedoor\.com/reader/ :fmap o vj
+autocmd LocationChange http://reader\.livedoor\.com/reader/ :fmap J <Space>
+autocmd LocationChange http://reader\.livedoor\.com/reader/ :fmap K <S-Space>
+
+" mixi
+js <<EOF
+autocommands.add('LocationChange',/mixi\.jp\//,
+  'js plugins.feedKey.setup("j k o p v".split(/ +/));');
+EOF
+
+" RTM
+js <<EOF
+autocommands.add('LocationChange',/www\.rememberthemilk\.com\//,
+  'js plugins.feedKey.setup("t c p d f g s u l y r z 1 2 3 4 a n k j i h m".split(/ +/));');
+EOF
+
+" Google
+js <<EOF
+autocommands.add('LocationChange',/www\.google\.co\.jp\//,
+  'js plugins.feedKey.setup("j k p o v".split(/ +/));');
+EOF
+
+" sns.kbmj.jp
+js <<EOF
+autocommands.add('LocationChange',/sns\.kbmj\.jp/,
+  'js plugins.feedKey.setup("j k o p v".split(/ +/));');
+EOF
+
+" google
+js <<EOF
+autocommands.add('LocationChange',/www\.google\.co\.jp/,
+  'js plugins.feedKey.setup("j k o p v".split(/ +/));');
+EOF
+
+" nicovideo
+js <<EOF
+autocommands.add('LocationChange',/www\.nicovideo\.jp/,
+  'js plugins.feedKey.setup("j k o p v".split(/ +/));');
+EOF
