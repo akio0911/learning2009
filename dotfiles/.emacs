@@ -129,18 +129,18 @@
 
 ;;; Twittering mode
 ;;;
-(setq load-path (cons "~/.emacs.d/twittering-mode" load-path))
-(require 'twittering-mode)
-(setq twittering-username "akio0911")
+;;(setq load-path (cons "~/.emacs.d/twittering-mode" load-path))
+;;(require 'twittering-mode)
+;;(setq twittering-username "akio0911")
 
-(autoload 'twittering-mode "twittering-mode" "" t)
-(autoload 'twittering-update-status-from-minibuffer "twittering-mode" "" t)
+;;(autoload 'twittering-mode "twittering-mode" "" t)
+;;(autoload 'twittering-update-status-from-minibuffer "twittering-mode" "" t)
 
-(defun twit ()
-  (interactive)
-  (twittering-update-status-from-minibuffer (buffer-substring (region-beginning) (region-end))))
+;;(defun twit ()
+;;  (interactive)
+;;  (twittering-update-status-from-minibuffer (buffer-substring (region-beginning) (region-end))))
 
-(setq twittering-timer-interval 65535)
+;;(setq twittering-timer-interval 65535)
 
 ;; ;; rhtml-minor-mode
 ;; (setq load-path (cons "~/.emacs.d" load-path))
@@ -492,9 +492,9 @@ mark-active
         (objc-mode . "stroustrup")))
 ;;;;;;;;;;;;;;;; ActionScript ;;;;;;;;;;;;;;;;
 
-(setq load-path (cons "~/.emacs.d/auto-complete/" load-path))
-(require 'auto-complete)
-(global-auto-complete-mode t)
+;;(setq load-path (cons "~/.emacs.d/auto-complete/" load-path))
+;;(require 'auto-complete)
+;;(global-auto-complete-mode t)
 
 ;; フォントサイズ指定
 ;;(if (eq window-system 'mac) (require 'carbon-font))
@@ -599,14 +599,14 @@ mark-active
 ;;; 分割したウィンドウ状態を保存・復元する
 ;;===================================
 ;; デフォルトは C-c C-w
-(setq load-path (cons "~/.emacs.d/revive/" load-path))
-(require 'revive)
-(setq load-path (cons "~/.emacs.d/windows/" load-path))
-(require 'windows)
+;;(setq load-path (cons "~/.emacs.d/revive/" load-path))
+;;(require 'revive)
+;;(setq load-path (cons "~/.emacs.d/windows/" load-path))
+;;(require 'windows)
 ;; 新規にフレームを作らない
-(setq win:use-frame nil)
-(win:startup-with-window)
-(define-key ctl-x-map "C" 'see-you-again)
+;;(setq win:use-frame nil)
+;;(win:startup-with-window)
+;;(define-key ctl-x-map "C" 'see-you-again)
 
 ;; irbsh
 ;;(add-to-list 'load-path "/opt/local/share/emacs/site-lisp")
