@@ -54,3 +54,5 @@ js <<EOF
 autocommands.add('LocationChange',/www\.nicovideo\.jp/,
   'js plugins.feedKey.setup("j k o p v".split(/ +/));');
 EOF
+
+map  <M-c> <C-v><M-c>

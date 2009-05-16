@@ -53,3 +53,6 @@ compinit
 zstyle ':completion:*' list-colors ''
 
 export SVN_EDITOR=vim
+
+export GISTY_DIR="$HOME/git/gists"
+
