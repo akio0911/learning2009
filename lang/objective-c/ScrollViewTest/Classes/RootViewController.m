@@ -17,15 +17,15 @@
 @synthesize button1;
 @synthesize button2;
 @synthesize button3;
+@synthesize scrollScale;
 
-/*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+		self.scrollScale = 1.0f;
 	}
     return self;
 }
-*/
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -70,37 +70,30 @@
 }
 */
 
-- (IBAction)pressButton1:(id)sender
+- (void)pressButton:(int)index
 {
 	NSLog(@"%@ %s", [self class], __func__);
-	UIView * aView = [self.views objectAtIndex:0];
+	UIView * aView = [self.views objectAtIndex:index];
 	CGRect r = aView.bounds;
 	r.origin.x = aView.center.x - aView.bounds.size.width / 2.0f;
 	r.origin.y = aView.center.y - aView.bounds.size.height / 2.0f;
 	NSLog(@"%f %f %f %f", r.origin.x, r.origin.y, aView.bounds.size.width, aView.bounds.size.height);
 	[scrollView scrollRectToVisible:r animated:YES];
+}
+
+- (IBAction)pressButton1:(id)sender
+{
+	[self pressButton:0];
 }
 
 - (IBAction)pressButton2:(id)sender
 {
-	NSLog(@"%@ %s", [self class], __func__);
-	UIView * aView = [self.views objectAtIndex:1];
-	CGRect r = aView.bounds;
-	r.origin.x = aView.center.x - aView.bounds.size.width / 2.0f;
-	r.origin.y = aView.center.y - aView.bounds.size.height / 2.0f;
-	NSLog(@"%f %f %f %f", r.origin.x, r.origin.y, aView.bounds.size.width, aView.bounds.size.height);
-	[scrollView scrollRectToVisible:r animated:YES];
+	[self pressButton:1];
 }
 
 - (IBAction)pressButton3:(id)sender
 {
-	NSLog(@"%@ %s", [self class], __func__);
-	UIView * aView = [self.views objectAtIndex:2];
-	CGRect r = aView.bounds;
-	r.origin.x = aView.center.x - aView.bounds.size.width / 2.0f;
-	r.origin.y = aView.center.y - aView.bounds.size.height / 2.0f;
-	NSLog(@"%f %f %f %f", r.origin.x, r.origin.y, aView.bounds.size.width, aView.bounds.size.height);
-	[scrollView scrollRectToVisible:r animated:YES];
+	[self pressButton:2];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,6 +102,7 @@
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {  
+	NSLog(@"viewForZoomingInScrollView");
 	id gestureInfo = [self.contentView valueForKey:@"gestureInfo"];  
 	NSLog(  
 		  @"will: %f %@ %@ %@",  
@@ -119,6 +113,11 @@
 		  );  
 	return self.contentView;
 }  
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+{
+	self.scrollScale = scale;
+}
 
 - (void)dealloc {
 	[self.views release];
