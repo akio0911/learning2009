@@ -55,27 +55,27 @@ package
 		this.x += this.v.x;
 		this.y += this.v.y;
 		break;
-	    case SEEK:
+	    case FLEE:
 		var dx:Number = mouseX - this.x;
 		var dy:Number = mouseY - this.y;
 
-		//		var range:Number = 100;
-		//		if(dx*dx+dy*dy < range*range){
-		//		    // 逃走
-		//		    dx = this.x - mouseX;
-		//		    dy = this.y - mouseY;
-		//		}
+		var range:Number = 100;
+		if(dx*dx+dy*dy < range*range){
+		    // 逃走
+		    dx = this.x - mouseX;
+		    dy = this.y - mouseY;
+		}
 
 		var angle:Number = Math.atan2(dy, dx);
 		this.rotation = angle * 180 / Math.PI;
 
 		var desiredVelocity:Vector2D = new Vector2D(dx, dy);
-		//		desiredVelocity.div(desiredVelocity.size());
-		//		desiredVelocity.mul(this.maxSpeed);
-		//				this.v.x = this.v.x + desiredVelocity.x/ 10.0;
-		//				this.v.y = this.v.y + desiredVelocity.y/ 10.0;
-		this.v.x = desiredVelocity.x/ 10.0;
-		this.v.y = desiredVelocity.y/ 10.0;
+		desiredVelocity.div(desiredVelocity.size());
+		desiredVelocity.mul(this.maxSpeed);
+		this.v.x = this.v.x + desiredVelocity.x/ 10.0;
+		this.v.y = this.v.y + desiredVelocity.y/ 10.0;
+		//this.v.x = desiredVelocity.x/ 10.0;
+		//this.v.y = desiredVelocity.y/ 10.0;
 		if(this.v.size() > this.maxSpeed){
 		    this.v.div(this.v.size());
 		    this.v.mul(this.maxSpeed);
