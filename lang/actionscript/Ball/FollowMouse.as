@@ -20,7 +20,7 @@ package{
 		var arrow:Arrow = new Arrow(size, colors[i]);
 		arrow.x = Math.random() * stage.stageWidth;
 		arrow.y = Math.random() * stage.stageHeight;
-		arrow.type = Arrow.FLEE;
+		arrow.type = Arrow.ARRIVE;
 		addChild(arrow);
 		arrows.push(arrow);
 	    }
