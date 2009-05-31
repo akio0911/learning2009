@@ -7,11 +7,10 @@ package{
 
     public class FollowMouse extends Sprite{
 	private var arrow:Arrow;
-	private var vx:Number = 0;
-	private var vy:Number = 0;
+	private var v:Vector2D = new Vector2D(0.0, 0.0);
+	private var maxSpeed:Number = 20.0;
 
 	public function FollowMouse(){
-	    log("frameRate = " + stage.frameRate);
 	    init();
 	}
 	private function init():void{
@@ -22,28 +21,28 @@ package{
 	private function onEnterFrame(event:Event):void{
 	    var dx:Number = mouseX - arrow.x;
 	    var dy:Number = mouseY - arrow.y;
+
 	    var range:Number = 100;
 	    if(dx*dx+dy*dy < range*range){
 		// 逃走
 		dx = arrow.x - mouseX;
 		dy = arrow.y - mouseY;
 	    }
-	    var desiredVelocity:Vector2D = new Vector2D(dx, dy);
+
 	    var angle:Number = Math.atan2(dy, dx);
 	    arrow.rotation = angle * 180 / Math.PI;
-	    var maxSpeed:Number = 20;
+
+	    var desiredVelocity:Vector2D = new Vector2D(dx, dy);
 	    desiredVelocity.div(desiredVelocity.size());
 	    desiredVelocity.mul(maxSpeed);
-	    
-	    vx += desiredVelocity.x - vx/10.0;
-	    vy += desiredVelocity.y - vy/10.0;
-	    var velocity:Vector2D = new Vector2D(vx, vy);
-	    if(velocity.size() > maxSpeed){
-		velocity.div(velocity.size());
-		velocity.mul(maxSpeed);
+	    v.x = v.x + desiredVelocity.x/ 10.0;
+	    v.y = v.y + desiredVelocity.y/ 10.0;
+	    if(v.size() > maxSpeed){
+		v.div(v.size());
+		v.mul(maxSpeed);
 	    }
-	    arrow.x += velocity.x;
-	    arrow.y += velocity.y;
+	    arrow.x += v.x;
+	    arrow.y += v.y;
 	}
     }
 }
