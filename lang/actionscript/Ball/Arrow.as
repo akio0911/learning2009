@@ -1,9 +1,11 @@
 package
 {
     import flash.display.Sprite;
+    import org.libspark.geom.Vector2D;
 
     public class Arrow extends Sprite {
 	private var size:Number;
+	public var v:Vector2D = new Vector2D(0.0, 0.0);
 
 	public function Arrow(size:Number=10){
 	    this.size = size;
