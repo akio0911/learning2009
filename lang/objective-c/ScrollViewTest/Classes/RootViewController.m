@@ -77,6 +77,10 @@
 	CGRect r = aView.bounds;
 	r.origin.x = aView.center.x - aView.bounds.size.width / 2.0f;
 	r.origin.y = aView.center.y - aView.bounds.size.height / 2.0f;
+	r.origin.x *= self.scrollScale;
+	r.origin.y *= self.scrollScale;
+	r.size.width *= self.scrollScale;
+	r.size.height *= self.scrollScale;
 	NSLog(@"%f %f %f %f", r.origin.x, r.origin.y, aView.bounds.size.width, aView.bounds.size.height);
 	[scrollView scrollRectToVisible:r animated:YES];
 }
@@ -102,10 +106,10 @@
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {  
-	NSLog(@"viewForZoomingInScrollView");
+	NSLog(@"%@ %s", [self class], __func__);
 	id gestureInfo = [self.contentView valueForKey:@"gestureInfo"];  
 	NSLog(  
-		  @"will: %f %@ %@ %@",  
+		  @"%f %@ %@ %@",  
 		  self.contentView.transform.a,  
 		  [gestureInfo valueForKey:@"zoomScale"],  
 		  [gestureInfo valueForKey:@"minScale"],  
@@ -116,7 +120,16 @@
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
 {
+	NSLog(@"%@ %s", [self class], __func__);
 	self.scrollScale = scale;
+	id gestureInfo = [self.contentView valueForKey:@"gestureInfo"];  
+	NSLog(  
+		  @"%f %@ %@ %@",  
+		  self.contentView.transform.a,  
+		  [gestureInfo valueForKey:@"zoomScale"],  
+		  [gestureInfo valueForKey:@"minScale"],  
+		  [gestureInfo valueForKey:@"maxScale"]  
+		  );  
 }
 
 - (void)dealloc {
