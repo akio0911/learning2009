@@ -1,0 +1,24 @@
+(
+  { division = "Research";
+    list = (
+      { name = "Oda Ichiro";
+        requests = (
+          { device = "USB Memory"; price = 2040; },
+          { device = "FireWire Cable"; price = 1860; }
+        );
+      },
+      { name = "Moroboshi Jiro";
+        requests = ( { device = "USB Memory"; price = 2890; } );
+      }
+    );
+  },
+  { division = "Development";
+    list = ( { name = "Imai Ichiko";
+               requests = (
+                 { device = "USB Memory"; price = 2040; },
+                 { device = "FireWire Cable"; price = 1860; }
+               );
+             },
+      );
+  },
+)
