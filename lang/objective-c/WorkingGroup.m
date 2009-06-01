@@ -7,30 +7,9 @@
     int age;
 }
 
-//@property (nonatomic, retain) NSString* name;
-//@property (nonatomic, retain) NSString* email;
-//@property (nonatomic, assign) int age;
-
 @end
 
 @implementation Person
-
-//@synthesize name;
-//@synthesize email;
-//@synthesize age;
-
-// - (void)setName:(NSString*)aName
-// {
-//     NSLog(@"Access: setName:\n");
-//     name = aName;
-// }
-
-// - (NSString*)email
-// {
-//     NSLog(@"Access: email:\n");
-//     return email;
-// }
-
 @end
 
 @interface WorkingGroup : NSObject
